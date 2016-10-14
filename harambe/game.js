@@ -1,11 +1,11 @@
 /*********************************************
- * Tululoo Game Maker v2.0.0
+ * Tululoo Game Maker v1.3.0
  *
  * Creators 
  * Zoltan Percsich
  * Vadim "YellowAfterlife" Dyachenko
  *
- * (c) SilentWorks 2011 - 2013
+ * (c) SilentWorks 2011
  * All rights reserved.
  * www.tululoo.com
  *
@@ -1534,9 +1534,9 @@ function interval_child() {
 		_child.goto_x = global.WIDTH+Math.random()*(room_width-global.WIDTH *2);
 		_child.goto_y = global.WIDTH+Math.random()*(room_height-global.WIDTH *2);
 		_child._speed = global.WIDTH/4 + Math.random()*global.WIDTH/4;
-		interval_child_time = 10000/Math.log(3+level)
+		interval_child_time = 10000/Math.log(3+global.GOD.level)
 					- (instance_number(enemy)-instance_number(child))*1000
-					+ 2500*Math.random()/Math.log(3+level);
+					+ 2500*Math.random()/Math.log(3+global.GOD.level);
 		interval_child();
 	}, interval_child_time);
 }
@@ -2209,7 +2209,6 @@ if (screen.width < screen.height) {
 __room_start__(this, main_room, screen.width, screen.height,
 	30, 192, 192, 192, null, 0, 0, 0,
 	screen.width, screen.height, null, 50, 50);
-sound_loop(snd_bg_voices);
 };
 }
 var main_room = new __main_room();
