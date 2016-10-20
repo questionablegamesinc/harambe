@@ -5,7 +5,7 @@
  * Zoltan Percsich
  * Vadim "YellowAfterlife" Dyachenko
  *
- * (c) SilentWorks 2011
+ * (c) SilentWorks 2011 - 2013
  * All rights reserved.
  * www.tululoo.com
  *
@@ -1463,6 +1463,9 @@ __audio_init__(this, snd_bg_voices, '', '', 'aud/bg_voices.ogg');
 /***********************************************************************
  * BACKGROUNDS
  ***********************************************************************/
+function __bg_grass_tile() { 
+__background_init__(this, bg_grass_tile, 'img/tile_grass4.png')}; var bg_grass_tile = new __bg_grass_tile();
+
 
 
 /***********************************************************************
@@ -1487,7 +1490,6 @@ __instance_init__(this, GOD, null, 1, -9999, null, 1, 1);
 this.on_creation = function() {
 with(this) {
 global.LOG = true;
-//global.WIDTH = Math.floor(Math.min(room_width, room_height)/24);
 global.WIDTH = Math.floor(room_width/24);
 global.HEIGHT = Math.floor(room_height/24);
 log("global.WIDTH = " + global.WIDTH);
@@ -1498,16 +1500,8 @@ global.harambe = instance_create(room_width/2, room_height/2, harambe);
 this.score = 0;
 this.level = 1;
 
-/*
-for(var xx=global.WIDTH; xx<room_width-global.WIDTH; xx+=global.WIDTH) {
-	instance_create(xx, global.WIDTH, block);
-	instance_create(xx, room_height-global.HEIGHT, block);
-}
-for(var yy=global.HEIGHT; yy<room_height-global.HEIGHT; yy+=global.HEIGHT) {
-	instance_create(0, yy, block);
-	instance_create(room_width-global.WIDTH, yy, block);
-}
-*/
+this.game_over = false;
+this.game_over_screen_alpha = 0;
 // child creation
 var interval_child_time = 1;
 function interval_child() {
@@ -1601,7 +1595,6 @@ this.on_destroy = on_destroy_i;
 this.on_step = on_step_i;
 this.on_end_step = function() {
 with(this) {
-// this.level = 1 + Math.floor(Math.log(1+this.score/10)); LOGARITHMIC
 this.level = 1 + Math.floor(score/1000);
 }
 };
@@ -1616,11 +1609,6 @@ with(this) {
 draw_set_color(0, 0, 0);
 draw_set_linewidth(global.WIDTH/20);
 draw_rectangle(global.WIDTH, global.HEIGHT, room_width-global.WIDTH, room_height-global.HEIGHT, true);
-/*if (global.harambe.load > 0) {
-	draw_set_color(128, 0, 0);
-	draw_set_linewidth(global.harambe.load *1/global.WIDTH);
-	draw_line(mouse_x, mouse_y, global.harambe.x, global.harambe.y);
-}*/
 if (global.harambe.show_hp) {
 	draw_set_color(0, 0, 0);
 	draw_rectangle(global.harambe.x -global.WIDTH,
@@ -1645,21 +1633,18 @@ if (global.harambe.show_hp) {
 				true);
 }
 
-/*draw_set_color(0, 0, 0);
-draw_sprite_ext(this.harambe.sprite_index,
-			this.harambe.image_index,
-			this.harambe.x,
-			this.harambe.y + 32,
-			this.harambe.image_xscale,
-			this.harambe.image_yscale /3,
-			this.harambe.image_angle,
-			this.harambe.image_alpha);*/
-/*
-draw_bold_text(16, 16, "HEALTH");
-draw_bold_text(room_width/2-16, 16, "POWER-UP");
-draw_bold_text(room_width/2 -global.WIDTH/2, global.WIDTH/2, "SCORE: " + this.score);
-*/
-draw_bold_text(global.WIDTH*2, global.HEIGHT/2, "LEVEL: " + this.level);
+draw_bold_text(global.WIDTH*2, global.HEIGHT/2, "LEVEL: " + this.level); // debug
+
+if (game_over) {
+	draw_set_color(0, 0, 0);
+	draw_set_alpha(game_over_screen_alpha);
+	draw_rectangle(0, 0, room_width, room_height, false);
+	game_over_screen_alpha += 0.005;
+	if (game_over_screen_alpha >= 1) {
+		location.reload();
+	}
+	draw_set_alpha(1);
+}
 }
 }
 };
@@ -1673,11 +1658,7 @@ set_image_scale(this, 4);
 this.image_speed = 0;
 
 this.hp = 100;
-this.load = 0;
-this.goto_x = 0;
-this.goto_y = 0;
-this.max_speed = global.WIDTH;
-this.friction = 0;
+this.max_speed = (global.WIDTH+global.HEIGHT)/2;
 this.show_hp = false;
 
 this.lbound = global.WIDTH+sprite_index.width*image_xscale/3;
@@ -1687,29 +1668,12 @@ this.dbound = room_height-global.HEIGHT-sprite_index.height*image_yscale/2;
 
 this.n_hits = 0;
 this.start_direction = null;
+
 }
 };
 this.on_destroy = on_destroy_i;
 this.on_step = function() {
 with(this) {
-/* MOVEMENT #1
-if (mouse_down && load < max_speed) {
-	load += max_speed /25;
-}
-if (mouse_check_released() && load > 0) {
-	speed = load;
-	log(speed);
-	direction = point_direction(x, y, mouse_x, mouse_y);
-	load = 0;
-	if (target) {
-		with(target) { instance_destroy(); }
-	}
-	target = instance_create(mouse_x, mouse_y, target);
-	friction = 0;
-	n_hits = 0;
-}
-*/
-
 if (x < lbound || x > rbound) {
 	x = x<lbound ? lbound+1 : rbound-1;
 	speed = 0;
@@ -1718,10 +1682,22 @@ if (y < ubound || y > dbound) {
 	y = y<ubound ? ubound+1 : dbound-1;
 	speed = 0;
 }
-// MOVEMENT #2
+
+// death
+if (hp <= 0 && !global.GOD.game_over) {
+	speed = 0;
+	sprite_index = spr_harambe_dead;
+	image_speed = 0.05;
+	collision_checking = false;
+	global.GOD.game_over = true;
+}
+// movement
+if (hp <= 0) {
+	return;
+}
 if (mouse_down) {
 	direction = point_direction(x, y, mouse_x, mouse_y);
-	speed = Math.min(40, point_distance(x, y, mouse_x, mouse_y)/15);
+	speed = Math.min(max_speed, point_distance(x, y, mouse_x, mouse_y)/15);
 	if (start_direction == null || Math.abs(direction-start_direction) > 20) {
 		n_hits = 0;
 		start_direction = direction;
@@ -1729,7 +1705,7 @@ if (mouse_down) {
 }
 
 if (speed > 0) {
-	speed -= speed/global.WIDTH*2;
+	speed -= max_speed/30;
 } else {
 	speed = 0;
 	n_hits = 0;
@@ -1739,7 +1715,11 @@ if (speed > 0) {
 };
 this.on_end_step = function() {
 with(this) {
-depth = -y;
+if (global.GOD.game_over) {
+	depth = global.GOD.depth-1;
+} else {
+	depth = -y;
+}
 if (direction > -90 && direction < 90) {
 	image_xscale = Math.abs(image_xscale)*-1;
 } else {
@@ -1758,9 +1738,7 @@ if (speed > max_speed/2.5) {
 } else {
 	sprite_index = spr_harambe_stand;
 }
-if (load > 0) {
-	image_speed = load /global.WIDTH*2;
-} else if (speed > 0) {
+if (speed > 0.2) {
 	image_speed = speed /global.WIDTH*2;
 } else {
 	image_speed = 0.3;
@@ -1792,7 +1770,7 @@ if (this.speed > this.max_speed/5) {
 		image_index = 0;
 		image_speed = 0.2;
 		n_hits++;
-		var s = Math.floor(this.speed * n_hits * 10);
+		var s = Math.floor((this.speed/this.max_speed) * 100 * n_hits);
 		global.GOD.score += s;
 		show_text(x, y, "+" + s);
 	}
@@ -1813,7 +1791,7 @@ this.on_animationend = function() {
 if(this.image_index >= this.image_number - 1) {
 with(this) {
 if (sprite_index == spr_harambe_dead) {
-	iamge_speed = 0;
+	image_speed = 0;
 	return;
 }
 if (sprite_index != spr_harambe_stand
@@ -2089,6 +2067,9 @@ this.on_draw = function() {
 if (this.visible == 1) {
 __handle_sprite__(this);
 with(this) {
+if (global.GOD.game_over) {
+	return;
+}
 draw_set_color(255, 0, 0);
 draw_circle(x, y, global.WIDTH/10, false);
 }
@@ -2183,7 +2164,7 @@ this.tiles = [
 this.objects = [
 [{o:GOD, x:21, y:23}]];
 this.start = function() {
-__room_start__(this, main_room, 640, 640, 60, 192, 192, 192, null, 0, 0, 0, 640, 640, null, 50, 50);
+__room_start__(this, main_room, 640, 640, 30, 192, 192, 192, bg_grass_tile.image, 1, 1, 0, 640, 640, null, 50, 50);
 
 // get screen width and height
 var e = window, a = 'inner';
@@ -2192,22 +2173,9 @@ if (!( 'innerWidth' in window )) {
 	e = document.documentElement || document.body;
 }
 var screen = {width:e[a + 'Width'], height:e[a + 'Height']};
-/* alert(screen.width + ", " + screen.height);
-//current scene size = 512, 640
-var original_scene_width = 640;
-var original_scene_height = 640;
-var scene_width = 0;
-var scene_height = 0;
-if (screen.width < screen.height) {
-	scene_width = screen.width;
-	scene_height = original_scene_height * screen.width/original_scene_width;
-} else {
-	scene_width = original_scene_width * screen.height/original_scene_height;
-	scene_height = screen.height;	
-}*/
 // re-start room with adjusted scene size
 __room_start__(this, main_room, screen.width, screen.height,
-	30, 192, 192, 192, null, 0, 0, 0,
+	30, 192, 192, 192, bg_grass_tile.image, true, true, false,
 	screen.width, screen.height, null, 50, 50);
 };
 }
