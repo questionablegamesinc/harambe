@@ -1389,7 +1389,7 @@ __sprite_init__(this, spr_food, 32, 32, 16, 16, 'Circle', 16, 0, 32, 0, 32, ['im
 }; var spr_food = new __spr_food();
 
 function __spr_harambe_dead() { 
-__sprite_init__(this, spr_harambe_dead, 80, 74, 40, 37, 'Circle', 32, 0, 80, 0, 74, ['img/spr_harambe_dead_0.png','img/spr_harambe_dead_1.png','img/spr_harambe_dead_2.png']);
+__sprite_init__(this, spr_harambe_dead, 80, 128, 40, 84, 'Circle', 40, 0, 80, 0, 128, ['img/spr_harambe_dead_0.png','img/spr_harambe_dead_1.png','img/spr_harambe_dead_2.png','img/spr_harambe_dead_3.png']);
 }; var spr_harambe_dead = new __spr_harambe_dead();
 
 function __spr_harambe_hit_chest() { 
@@ -1440,6 +1440,26 @@ function __spr_target() {
 __sprite_init__(this, spr_target, 8, 8, 4, 4, 'Box', 4, 0, 8, 0, 8, ['img/spr_target_0.png']);
 }; var spr_target = new __spr_target();
 
+function __spr_fence() { 
+__sprite_init__(this, spr_fence, 20, 122, 10, 61, 'Box', 10, 0, 20, 0, 122, ['img/spr_fence_0.png']);
+}; var spr_fence = new __spr_fence();
+
+function __spr_fence_pole() { 
+__sprite_init__(this, spr_fence_pole, 34, 153, 17, 76, 'Box', 17, 0, 34, 0, 153, ['img/spr_fence_pole_0.png']);
+}; var spr_fence_pole = new __spr_fence_pole();
+
+function __spr_blood_pool() { 
+__sprite_init__(this, spr_blood_pool, 40, 32, 20, 16, 'Box', 20, 0, 40, 0, 32, ['img/spr_blood_pool_0.png','img/spr_blood_pool_1.png','img/spr_blood_pool_2.png']);
+}; var spr_blood_pool = new __spr_blood_pool();
+
+function __spr_blood_spot() { 
+__sprite_init__(this, spr_blood_spot, 60, 64, 30, 32, 'Box', 30, 0, 60, 0, 64, ['img/spr_blood_spot_0.png','img/spr_blood_spot_1.png','img/spr_blood_spot_2.png']);
+}; var spr_blood_spot = new __spr_blood_spot();
+
+function __spr_harambe_toss() { 
+__sprite_init__(this, spr_harambe_toss, 80, 100, 40, 50, 'Circle', 40, 0, 80, 0, 100, ['img/spr_harambe_toss_0.png','img/spr_harambe_toss_1.png','img/spr_harambe_toss_2.png','img/spr_harambe_toss_3.png','img/spr_harambe_toss_4.png','img/spr_harambe_toss_5.png']);
+}; var spr_harambe_toss = new __spr_harambe_toss();
+
 
 
 /***********************************************************************
@@ -1466,6 +1486,15 @@ __audio_init__(this, snd_bg_voices, '', '', 'aud/bg_voices.ogg');
 function __bg_grass_tile() { 
 __background_init__(this, bg_grass_tile, 'img/tile_grass4.png')}; var bg_grass_tile = new __bg_grass_tile();
 
+function __bg_title() { 
+__background_init__(this, bg_title, 'img/title_screen.png')}; var bg_title = new __bg_title();
+
+function __bg_grass_tile_small() { 
+__background_init__(this, bg_grass_tile_small, 'img/tile_grass4_small.png')}; var bg_grass_tile_small = new __bg_grass_tile_small();
+
+function __bg_grass_tile_2() { 
+__background_init__(this, bg_grass_tile_2, 'img/tile_grass5_small.png')}; var bg_grass_tile_2 = new __bg_grass_tile_2();
+
 
 
 /***********************************************************************
@@ -1486,7 +1515,7 @@ __font_init__(this, generic, 'courier', 20, 0, 0)}; var generic = new __generic(
  * OBJECTS
  ***********************************************************************/
 function __GOD() {
-__instance_init__(this, GOD, null, 1, -9999, null, 1, 1);
+__instance_init__(this, GOD, null, 1, -9999, null, 1, 0);
 this.on_creation = function() {
 with(this) {
 global.LOG = true;
@@ -1502,66 +1531,75 @@ this.level = 1;
 
 this.game_over = false;
 this.game_over_screen_alpha = 0;
+
+var fp1 = instance_create(0, global.HEIGHT/2, fence_pole);
+var fp2 = instance_create(room_width, global.HEIGHT/2, fence_pole);
+var fp3 = instance_create(0, room_height-global.HEIGHT/2, fence_pole);
+var fp4 = instance_create(room_width, room_height-global.HEIGHT/2, fence_pole);
+fp1.right_link = fp2;
+fp1.down_link = fp3;
+fp2.down_link = fp4;
+fp3.right_link = fp4;
+
 // child creation
 var interval_child_time = 1;
 function interval_child() {
 	setTimeout(function() {
 		var rnd = Math.random();
 		var _child = null;
-		if (rnd < 0.25) { // left
+		if (rnd < 0.25) { // left bound
 			_child = instance_create(global.WIDTH/2,
 						global.WIDTH+Math.random()*(room_height-global.WIDTH),
 						child);
-		} else if (rnd < 0.5) { // up
+		} else if (rnd < 0.5) { // up bound
 			_child = instance_create(global.WIDTH+Math.random()*(room_width-global.WIDTH),
 						global.WIDTH/2,
 						child);
-		} else if (rnd < 0.75) { // right
+		} else if (rnd < 0.75) { // right bound
 			_child = instance_create(room_width-global.WIDTH/2,
 						global.WIDTH+Math.random()*(room_height-global.WIDTH),
 						child);
-		} else { // down
+		} else { // down bound
 			_child = instance_create(global.WIDTH+Math.random()*(room_width-global.WIDTH),
 						room_height-global.WIDTH/2,
 						child);	
 		}
-		_child.goto_x = global.WIDTH+Math.random()*(room_width-global.WIDTH *2);
-		_child.goto_y = global.WIDTH+Math.random()*(room_height-global.WIDTH *2);
-		_child._speed = global.WIDTH/4 + Math.random()*global.WIDTH/4;
-		interval_child_time = 10000/Math.log(3+global.GOD.level)
-					- (instance_number(enemy)-instance_number(child))*1000
-					+ 2500*Math.random()/Math.log(3+global.GOD.level);
+		_child.goto_x = room_width/4+random(room_width/2);
+		_child.goto_y = room_height/4+random(room_height/2);
+		_child._speed = global.WIDTH/4+random(global.WIDTH/4);
+		interval_child_time = 3000 - Math.min(49, global.GOD.level)*60;
 		interval_child();
 	}, interval_child_time);
 }
 interval_child();
 // enemy creation
-this.interval_soldier = setInterval(function() {
+function interval_enemy() {
 	var rnd = Math.random();
 	var e;
 	if (rnd < 0.25) { // left
-		e = instance_create(global.WIDTH/2,
-			global.HEIGHT+Math.random()*(room_height-global.HEIGHT),
+		e = instance_create(global.WIDTH/3,
+			global.HEIGHT+random(room_height-global.HEIGHT),
 			enemy)
 		e._direction = 2;
 	} else if (rnd < 0.5) { // up
-		e = instance_create(global.WIDTH+Math.random()*(room_width-global.WIDTH),
+		e = instance_create(global.WIDTH+random(room_width-global.WIDTH),
 			global.HEIGHT/2,
 			enemy);
 		e._direction = 0;
 	} else if (rnd < 0.75) { // right
-		e = instance_create(room_width-global.WIDTH/2,
-			global.HEIGHT+Math.random()*(room_height-global.HEIGHT),
+		e = instance_create(room_width-global.WIDTH/3,
+			global.HEIGHT+random(room_height-global.HEIGHT),
 			enemy);
 		e._direction = 1;
 	} else { // down
-		e = instance_create(global.WIDTH+Math.random()*(room_width-global.WIDTH),
+		e = instance_create(global.WIDTH+random(room_width-global.WIDTH),
 			room_height-global.HEIGHT/2,
 			enemy);
 		e._direction = 3;
 	}
-}, 20000/Math.log(3+this.level) + 10000*Math.random()/Math.log(3+this.level));
-
+	setTimeout(function() { interval_enemy() }, 10000 - Math.min(49, global.GOD.level)*200);
+}
+setTimeout(function() { interval_enemy() }, 5000);
 // food creation
 this.interval_food = setInterval(function() {
 	var rnd = Math.random();
@@ -1595,7 +1633,12 @@ this.on_destroy = on_destroy_i;
 this.on_step = on_step_i;
 this.on_end_step = function() {
 with(this) {
-this.level = 1 + Math.floor(score/1000);
+this.level = 1 + Math.floor(score/500);
+
+// blood cleaning
+if (instance_number(blood) > 20) {
+	with(instance_list(blood)[0]) { instance_destroy(); }
+}
 }
 };
 this.on_collision = on_collision_i;
@@ -1606,9 +1649,9 @@ this.on_draw = function() {
 if (this.visible == 1) {
 __handle_sprite__(this);
 with(this) {
-draw_set_color(0, 0, 0);
-draw_set_linewidth(global.WIDTH/20);
-draw_rectangle(global.WIDTH, global.HEIGHT, room_width-global.WIDTH, room_height-global.HEIGHT, true);
+//draw_set_color(0, 0, 0);
+//draw_set_linewidth(global.WIDTH/20);
+//draw_rectangle(global.WIDTH, global.HEIGHT, room_width-global.WIDTH, room_height-global.HEIGHT, true);
 if (global.harambe.show_hp) {
 	draw_set_color(0, 0, 0);
 	draw_rectangle(global.harambe.x -global.WIDTH,
@@ -1651,7 +1694,7 @@ if (game_over) {
 }; var GOD = new __GOD();
 
 function __harambe() {
-__instance_init__(this, harambe, null, 1, 0, spr_harambe_run, 1, 2);
+__instance_init__(this, harambe, null, 1, 0, spr_harambe_run, 1, 1);
 this.on_creation = function() {
 with(this) {
 set_image_scale(this, 4);
@@ -1660,11 +1703,12 @@ this.image_speed = 0;
 this.hp = 100;
 this.max_speed = (global.WIDTH+global.HEIGHT)/2;
 this.show_hp = false;
+this.move_enabled = true;
 
 this.lbound = global.WIDTH+sprite_index.width*image_xscale/3;
 this.rbound = room_width-global.WIDTH-sprite_index.width*image_xscale/3;
-this.ubound = global.HEIGHT/2;
-this.dbound = room_height-global.HEIGHT-sprite_index.height*image_yscale/2;
+this.ubound = global.HEIGHT;
+this.dbound = room_height-global.HEIGHT-sprite_index.height*image_yscale/3;
 
 this.n_hits = 0;
 this.start_direction = null;
@@ -1685,14 +1729,15 @@ if (y < ubound || y > dbound) {
 
 // death
 if (hp <= 0 && !global.GOD.game_over) {
+	move_enabled = false;
 	speed = 0;
 	sprite_index = spr_harambe_dead;
-	image_speed = 0.05;
+	image_speed = 0.03;
 	collision_checking = false;
 	global.GOD.game_over = true;
 }
 // movement
-if (hp <= 0) {
+if (!move_enabled) {
 	return;
 }
 if (mouse_down) {
@@ -1731,6 +1776,7 @@ if (sprite_index != spr_harambe_stand
 	&& sprite_index != spr_harambe_run) {
 	return;
 }
+
 if (speed > max_speed/2.5) {
 	sprite_index = spr_harambe_run;
 } else if (speed > 0.2) {
@@ -1767,15 +1813,21 @@ if (this.speed > this.max_speed/5) {
 		other.flying = true;
 		sprite_index = sprite_index == spr_harambe_punch_right ?
 			spr_harambe_punch_left : spr_harambe_punch_right;
-		image_index = 0;
-		image_speed = 0.2;
+		image_speed = 0.1;
 		n_hits++;
 		var s = Math.floor((this.speed/this.max_speed) * 100 * n_hits);
 		global.GOD.score += s;
 		show_text(x, y, "+" + s);
 	}
 } else {
-	this.holding = other;
+	if (other.speed == 0) {
+		//move_enabled = false;
+		//sprite_index = spr_harambe_toss;
+		//image_speed = 0.3;
+		other.speed = this.speed*3;
+		other.direction = point_direction(this.x, this.y, other.x, other.y);
+		speed = 0;
+	}
 }
 }
 this.other = this.place_meeting(this.x, this.y, food);
@@ -1806,7 +1858,7 @@ this.on_draw = on_draw_i;
 }; var harambe = new __harambe();
 
 function __block() {
-__instance_init__(this, block, null, 1, 0, spr_block, 1, 3);
+__instance_init__(this, block, null, 1, 0, spr_block, 1, 2);
 this.on_creation = function() {
 with(this) {
 set_image_scale(this, 1);
@@ -1823,7 +1875,7 @@ this.on_draw = on_draw_i;
 }; var block = new __block();
 
 function __child() {
-__instance_init__(this, child, null, 1, 0, spr_child_launching, 1, 4);
+__instance_init__(this, child, null, 1, 0, spr_child_launching, 1, 3);
 this.on_creation = function() {
 with(this) {
 set_image_scale(this, 1.25);
@@ -1849,17 +1901,7 @@ if (x == goto_x && y == goto_y && launched) {
 	this.launched = false;
 	sprite_index = spr_child_walk;
 	image_speed = 0;
-	/*setInterval(function() {
-		if (flying) { return; }
-		direction = Math.random()*360;
-		speed = 0.2+Math.random()*0.5;
-		image_speed = speed/2;
-		if (direction > 270 || direction < 90) {
-			image_xscale = Math.abs(image_xscale)*-1;
-		} else {
-			image_xscale = Math.abs(image_xscale);
-		}
-	}, 5000+Math.random()*5000);*/
+	image_xscale *= Math.random()>0.5?1:-1;
 }
 
 if (outside_of_room(this)) {
@@ -1888,6 +1930,13 @@ if (sprite_index == spr_child_flying && this.target == null) {
 		direction = point_direction(x, y, this.target.x, this.target.y);
 	}
 }
+
+if (speed > 0 && sprite_index != spr_child_flying) {
+	speed /= 1.1;
+	if (speed < 0.05) {
+		speed = 0;
+	}
+}
 }
 };
 this.on_collision = function() {
@@ -1905,7 +1954,7 @@ this.on_draw = on_draw_i;
 }; var child = new __child();
 
 function __shadow() {
-__instance_init__(this, shadow, null, 1, 0, spr_shadow, 1, 5);
+__instance_init__(this, shadow, null, 1, 0, spr_shadow, 1, 4);
 this.on_creation = on_creation_i;
 this.on_destroy = on_destroy_i;
 this.on_step = on_step_i;
@@ -1918,9 +1967,10 @@ this.on_draw = on_draw_i;
 }; var shadow = new __shadow();
 
 function __enemy() {
-__instance_init__(this, enemy, null, 1, 0, spr_swat_stand, 1, 6);
+__instance_init__(this, enemy, null, 1, 0, spr_swat_stand, 1, 5);
 this.on_creation = function() {
 with(this) {
+depth = -y;
 set_image_scale(this, 1.75);
 this.image_speed = 0;
 
@@ -1928,7 +1978,7 @@ this.crosshair = instance_create(x, y, crosshair);
 this.crosshair.goto_x = global.harambe.x;
 this.crosshair.goto_y = global.harambe.y;
 this.crosshair.goto_speed = Math.max(global.GOD.level, 10);
-this.interval_time = 10000 / global.GOD.level/1.5;
+this.interval_time = 10000 - Math.min(49, global.GOD.level)*200;
 
 this.interval_move = setInterval(function() {
 			var rnd = Math.random();
@@ -2006,7 +2056,7 @@ if (this.crosshair.shooting) {
 }; var enemy = new __enemy();
 
 function __target() {
-__instance_init__(this, target, null, 0, 0, spr_target, 1, 7);
+__instance_init__(this, target, null, 0, 0, spr_target, 1, 6);
 this.on_creation = on_creation_i;
 this.on_destroy = on_destroy_i;
 this.on_step = on_step_i;
@@ -2019,16 +2069,20 @@ this.on_draw = on_draw_i;
 }; var target = new __target();
 
 function __crosshair() {
-__instance_init__(this, crosshair, null, 1, -999999, spr_crosshair, 1, 8);
+__instance_init__(this, crosshair, null, 1, -999999, spr_crosshair, 1, 7);
 this.on_creation = function() {
 with(this) {
 this.collision_time = 0;
 this.shooting = false;
+this.colliding = false;
+this.min_size = Math.max(global.WIDTH, global.HEIGHT)/15;
+this.max_size = this.min_size*2;
 }
 };
 this.on_destroy = on_destroy_i;
 this.on_step = function() {
 with(this) {
+colliding = false;
 if (x != goto_x || y != goto_y) {
 	move_towards_point(goto_x, goto_y, goto_speed);
 }
@@ -2039,8 +2093,9 @@ this.on_collision = function() {
 with(this) {
 this.other = this.place_meeting(this.x, this.y, harambe);
 if(this.other != null) {
+colliding = true;
 collision_time++;
-if (!shooting && collision_time > 200/Math.log(3+global.GOD.level)) {
+if (!shooting && collision_time > 300/Math.log(3+global.GOD.level)) {
 	shooting = true;
 	update_harambe_hp(-5);
 	global.harambe.image_speed = 0.1;
@@ -2052,6 +2107,7 @@ if (!shooting && collision_time > 200/Math.log(3+global.GOD.level)) {
 	} else {
 		global.harambe.sprite_index = spr_harambe_hit_head;		
 	}
+	instance_create(x, y, blood);
 	setTimeout(function() {
 		shooting = false;
 		collision_time = 0;
@@ -2071,14 +2127,14 @@ if (global.GOD.game_over) {
 	return;
 }
 draw_set_color(255, 0, 0);
-draw_circle(x, y, global.WIDTH/10, false);
+draw_circle(x, y, colliding?max_size:min_size, false);
 }
 }
 };
 }; var crosshair = new __crosshair();
 
 function __text_handler() {
-__instance_init__(this, text_handler, null, 1, -9999, null, 1, 9);
+__instance_init__(this, text_handler, null, 1, -9999, null, 1, 8);
 this.on_creation = function() {
 with(this) {
 fucking_die = false;
@@ -2110,7 +2166,7 @@ draw_bold_text(x, y, text, color);
 }; var text_handler = new __text_handler();
 
 function __food() {
-__instance_init__(this, food, null, 1, 0, spr_food, 1, 10);
+__instance_init__(this, food, null, 1, 0, spr_food, 1, 9);
 this.on_creation = function() {
 with(this) {
 image_speed = 0;
@@ -2153,18 +2209,107 @@ draw_same_sprite(this);
 };
 }; var food = new __food();
 
+function __fence_pole() {
+__instance_init__(this, fence_pole, null, 1, 0, spr_fence_pole, 1, 10);
+this.on_creation = function() {
+with(this) {
+set_image_scale(this, 2);
+right_link = null;
+down_link = null;
+}
+};
+this.on_destroy = on_destroy_i;
+this.on_step = on_step_i;
+this.on_end_step = on_end_step_i;
+this.on_collision = on_collision_i;
+this.on_roomstart = on_roomstart_i;
+this.on_roomend = on_roomend_i;
+this.on_animationend = on_animationend_i;
+this.on_draw = function() {
+if (this.visible == 1) {
+__handle_sprite__(this);
+with(this) {
+depth = -y;
+if (right_link != null) {
+	var spr = spr_fence;
+	var yscale = sprite_index.height*image_yscale/spr.height;
+	for(var xx=x; xx<right_link.x; xx+=spr.width) {
+		draw_sprite_ext(spr, 0, xx, y, 1, yscale, 0, 1);
+	}
+}
+if (down_link != null) {
+	draw_set_color(50, 50, 50);
+	draw_rectangle(x-global.WIDTH/2, y, down_link.x+global.WIDTH/2, down_link.y, false);
+	draw_set_color(190, 190, 190);
+	draw_rectangle(x-global.WIDTH/2+2, y+2, down_link.x+global.WIDTH/2-2, down_link.y-global.HEIGHT, false);
+}
+//draw_same_sprite(this);
+
+}
+}
+};
+}; var fence_pole = new __fence_pole();
+
+function __blood() {
+__instance_init__(this, blood, null, 1, 0, spr_blood_spot, 1, 11);
+this.on_creation = function() {
+with(this) {
+set_image_scale(this, Math.ceil(random(4)));
+depth = global.harambe.depth-1;
+image_speed = 0.2;
+}
+};
+this.on_destroy = on_destroy_i;
+this.on_step = on_step_i;
+this.on_end_step = on_end_step_i;
+this.on_collision = on_collision_i;
+this.on_roomstart = on_roomstart_i;
+this.on_roomend = on_roomend_i;
+this.on_animationend = function() {
+if(this.image_index >= this.image_number - 1) {
+with(this) {
+y += global.HEIGHT/2;
+depth = 999;
+sprite_index = spr_blood_pool;
+image_speed = 0;
+image_index = Math.floor(random(3));
+}
+}
+};
+this.on_draw = on_draw_i;
+}; var blood = new __blood();
+
+function __title_screen() {
+__instance_init__(this, title_screen, null, 1, 0, null, 1, 12);
+this.on_creation = on_creation_i;
+this.on_destroy = on_destroy_i;
+this.on_step = function() {
+with(this) {
+if (mouse_down) {
+	room_goto(room_main);
+}
+}
+};
+this.on_end_step = on_end_step_i;
+this.on_collision = on_collision_i;
+this.on_roomstart = on_roomstart_i;
+this.on_roomend = on_roomend_i;
+this.on_animationend = on_animationend_i;
+this.on_draw = on_draw_i;
+}; var title_screen = new __title_screen();
+
 
 
 /***********************************************************************
  * SCENES
  ***********************************************************************/
-function __main_room() { 
+function __room_main() { 
 this.tiles = [
 ];
 this.objects = [
-[{o:GOD, x:21, y:23}]];
+];
 this.start = function() {
-__room_start__(this, main_room, 640, 640, 30, 192, 192, 192, bg_grass_tile.image, 1, 1, 0, 640, 640, null, 50, 50);
+__room_start__(this, room_main, 640, 640, 30, 192, 192, 192, bg_grass_tile_small.image, 1, 1, 0, 640, 640, null, 50, 50);
 
 // get screen width and height
 var e = window, a = 'inner';
@@ -2174,14 +2319,27 @@ if (!( 'innerWidth' in window )) {
 }
 var screen = {width:e[a + 'Width'], height:e[a + 'Height']};
 // re-start room with adjusted scene size
-__room_start__(this, main_room, screen.width, screen.height,
-	30, 192, 192, 192, bg_grass_tile.image, true, true, false,
+__room_start__(this, room_main, screen.width, screen.height,
+	30, 192, 192, 192, bg_grass_tile_small.image, true, true, false,
 	screen.width, screen.height, null, 50, 50);
+// create GOD
+instance_create(0, 0, GOD);
 };
 }
-var main_room = new __main_room();
-tu_scenes.push(main_room);
-tu_room_to_go = main_room;
+var room_main = new __room_main();
+tu_scenes.push(room_main);
+function __room_title() { 
+this.tiles = [
+];
+this.objects = [
+[{o:title_screen, x:320, y:128}]];
+this.start = function() {
+__room_start__(this, room_title, 640, 480, 30, 0, 0, 0, bg_title.image, 0, 0, 1, 640, 480, null, 50, 50);
+};
+}
+var room_title = new __room_title();
+tu_scenes.push(room_title);
+tu_room_to_go = room_main;
 
 
 /***********************************************************************
@@ -2277,6 +2435,21 @@ draw_sprite_ext(obj.sprite_index,
 				obj.image_yscale,
 				obj.image_angle,
 				obj.image_alpha);
+}
+function enterFullScreen() { 
+alert("Going full");
+var i = document.getElementById("tululoogame");
+
+// go full-screen
+if (i.requestFullscreen) {
+	i.requestFullscreen();
+} else if (i.webkitRequestFullscreen) {
+	i.webkitRequestFullscreen();
+} else if (i.mozRequestFullScreen) {
+	i.mozRequestFullScreen();
+} else if (i.msRequestFullscreen) {
+	i.msRequestFullscreen();
+}
 }
 
 
