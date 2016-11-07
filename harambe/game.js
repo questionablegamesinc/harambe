@@ -1460,6 +1460,26 @@ function __spr_harambe_toss() {
 __sprite_init__(this, spr_harambe_toss, 80, 100, 40, 50, 'Circle', 40, 0, 80, 0, 100, ['img/spr_harambe_toss_0.png','img/spr_harambe_toss_1.png','img/spr_harambe_toss_2.png','img/spr_harambe_toss_3.png','img/spr_harambe_toss_4.png','img/spr_harambe_toss_5.png']);
 }; var spr_harambe_toss = new __spr_harambe_toss();
 
+function __spr_policeman_stand() { 
+__sprite_init__(this, spr_policeman_stand, 24, 32, 12, 16, 'Box', 12, 0, 24, 0, 32, ['img/spr_policeman_stand_0.png','img/spr_policeman_stand_1.png','img/spr_policeman_stand_2.png','img/spr_policeman_stand_3.png']);
+}; var spr_policeman_stand = new __spr_policeman_stand();
+
+function __spr_policeman_shoot() { 
+__sprite_init__(this, spr_policeman_shoot, 24, 32, 12, 16, 'Box', 12, 0, 24, 0, 32, ['img/spr_policeman_shoot_0.png','img/spr_policeman_shoot_1.png','img/spr_policeman_shoot_2.png','img/spr_policeman_shoot_3.png']);
+}; var spr_policeman_shoot = new __spr_policeman_shoot();
+
+function __spr_soldier_shoot() { 
+__sprite_init__(this, spr_soldier_shoot, 24, 32, 12, 16, 'Box', 12, 0, 24, 0, 32, ['img/spr_soldier_shoot_0.png','img/spr_soldier_shoot_1.png','img/spr_soldier_shoot_2.png','img/spr_soldier_shoot_3.png']);
+}; var spr_soldier_shoot = new __spr_soldier_shoot();
+
+function __spr_bomb() { 
+__sprite_init__(this, spr_bomb, 16, 16, 8, 8, 'Circle', 6, 0, 16, 0, 16, ['img/spr_bomb_0.png']);
+}; var spr_bomb = new __spr_bomb();
+
+function __spr_explosion() { 
+__sprite_init__(this, spr_explosion, 128, 128, 64, 64, 'Circle', 40, 0, 128, 0, 128, ['img/spr_explosion_0.png','img/spr_explosion_1.png','img/spr_explosion_2.png','img/spr_explosion_3.png','img/spr_explosion_4.png','img/spr_explosion_5.png','img/spr_explosion_6.png','img/spr_explosion_7.png']);
+}; var spr_explosion = new __spr_explosion();
+
 
 
 /***********************************************************************
@@ -1573,30 +1593,36 @@ function interval_child() {
 }
 interval_child();
 // enemy creation
+this.enemy_type = {
+    POLICEMAN: 0,
+    SWAT: 1,
+    SOLDIER: 2
+};
 function interval_enemy() {
 	var rnd = Math.random();
-	var e;
+	var _enemy;
 	if (rnd < 0.25) { // left
-		e = instance_create(global.WIDTH/3,
+		_enemy = instance_create(global.WIDTH/3,
 			global.HEIGHT+random(room_height-global.HEIGHT),
 			enemy)
-		e._direction = 2;
+		_enemy._direction = 2;
 	} else if (rnd < 0.5) { // up
-		e = instance_create(global.WIDTH+random(room_width-global.WIDTH),
+		_enemy = instance_create(global.WIDTH+random(room_width-global.WIDTH),
 			global.HEIGHT/2,
 			enemy);
-		e._direction = 0;
+		_enemy._direction = 0;
 	} else if (rnd < 0.75) { // right
-		e = instance_create(room_width-global.WIDTH/3,
+		_enemy = instance_create(room_width-global.WIDTH/3,
 			global.HEIGHT+random(room_height-global.HEIGHT),
 			enemy);
-		e._direction = 1;
+		_enemy._direction = 1;
 	} else { // down
-		e = instance_create(global.WIDTH+random(room_width-global.WIDTH),
+		_enemy = instance_create(global.WIDTH+random(room_width-global.WIDTH),
 			room_height-global.HEIGHT/2,
 			enemy);
-		e._direction = 3;
+		_enemy._direction = 3;
 	}
+	_enemy.type = Math.floor(random(3));
 	setTimeout(function() { interval_enemy() }, 10000 - Math.min(49, global.GOD.level)*200);
 }
 setTimeout(function() { interval_enemy() }, 5000);
@@ -1889,6 +1915,13 @@ setTimeout(function() {
 	me.sprite_index = spr_child_launched;
 	me.image_speed = _speed /20;
 }, 1000);
+
+
+this.lbound = global.harambe.lbound;
+this.rbound = global.harambe.rbound;
+this.ubound = global.harambe.ubound;
+this.dbound = global.harambe.dbound;
+
 }
 };
 this.on_destroy = on_destroy_i;
@@ -1913,7 +1946,7 @@ this.on_end_step = function() {
 with(this) {
 depth = -y;
 collision_checking = (sprite_index == spr_child_flying ||
-	point_distance(x, y, global.harambe.x, global.harambe.y) < global.WIDTH*5);
+	point_distance(x, y, global.harambe.x, global.harambe.y) < global.WIDTH*3);
 
 if (sprite_index == spr_child_flying && this.target == null) {
 	var threshold = global.WIDTH*3;
@@ -1934,6 +1967,18 @@ if (sprite_index == spr_child_flying && this.target == null) {
 if (speed > 0 && sprite_index != spr_child_flying) {
 	speed /= 1.1;
 	if (speed < 0.05) {
+		speed = 0;
+	}
+}
+
+if (sprite_index == spr_child_walk) {
+	// boundaries check
+	if (x < lbound || x > rbound) {
+		x = x<lbound ? lbound+1 : rbound-1;
+		speed = 0;
+	}
+	if (y < ubound || y > dbound) {
+		y = y<ubound ? ubound+1 : dbound-1;
 		speed = 0;
 	}
 }
@@ -1971,13 +2016,13 @@ __instance_init__(this, enemy, null, 1, 0, spr_swat_stand, 1, 5);
 this.on_creation = function() {
 with(this) {
 depth = -y;
-set_image_scale(this, 1.75);
 this.image_speed = 0;
 
 this.crosshair = instance_create(x, y, crosshair);
 this.crosshair.goto_x = global.harambe.x;
 this.crosshair.goto_y = global.harambe.y;
 this.crosshair.goto_speed = Math.max(global.GOD.level, 10);
+this.crosshair.owner = this;
 this.interval_time = 10000 - Math.min(49, global.GOD.level)*200;
 
 this.interval_move = setInterval(function() {
@@ -2001,7 +2046,6 @@ this.interval_move = setInterval(function() {
 				interval_time/=1.1;
 			}
 		}, interval_time);
-
 }
 };
 this.on_destroy = function() {
@@ -2012,14 +2056,26 @@ with(this.crosshair) { instance_destroy(); }
 this.on_step = on_step_i;
 this.on_end_step = function() {
 with(this) {
+if (type == global.GOD.enemy_type.POLICEMAN) {
+	spr_stand = spr_policeman_stand;
+	spr_shoot = spr_policeman_shoot;
+} else if (type == global.GOD.enemy_type.SWAT) {
+	spr_stand = spr_swat_stand;
+	spr_shoot = spr_swat_shoot;	
+} else if (type == global.GOD.enemy_type.SOLDIER) {
+	spr_stand = spr_soldier_shoot;
+	spr_shoot = spr_soldier_shoot;
+}
+set_image_scale(this, 2);
+
 this.image_index = this._direction;
 
 if (this.crosshair.shooting
 	|| this.crosshair.x != this.crosshair.goto_x
 	|| this.crosshair.y != this.crosshair.goto_y) {
-	sprite_index = spr_swat_shoot;
+	sprite_index = spr_shoot;
 } else {
-	sprite_index = spr_swat_stand;
+	sprite_index = spr_stand;
 }
 }
 };
@@ -2095,23 +2151,45 @@ this.other = this.place_meeting(this.x, this.y, harambe);
 if(this.other != null) {
 colliding = true;
 collision_time++;
-if (!shooting && collision_time > 300/Math.log(3+global.GOD.level)) {
-	shooting = true;
-	update_harambe_hp(-5);
-	global.harambe.image_speed = 0.1;
-	global.harambe.image_index = 0;		
-	if (target == 0) {
-		global.harambe.sprite_index = spr_harambe_hit_chest;
-	} else if (target == 1) {
-		global.harambe.sprite_index = spr_harambe_hit_face;		
+var collision_time_max = 175/Math.log(3+global.GOD.level);
+var damage = -1;
+var scale = 2;
+if (owner.type == global.GOD.enemy_type.SWAT) {
+	collision_time_max = 250/Math.log(3+global.GOD.level);
+	damage = -5;
+	scale = 4;
+}
+if (owner.type == global.GOD.enemy_type.SOLDIER) {
+	collision_time_max = 300/Math.log(3+global.GOD.level);
+}
+if (!shooting && collision_time > collision_time_max) {
+	if (owner.type != global.GOD.enemy_type.SOLDIER) {
+		// normal shot
+		shooting = true;
+		update_harambe_hp(damage);
+		global.harambe.image_speed = 0.1;
+		global.harambe.image_index = 0;		
+		if (target == 0) {
+			global.harambe.sprite_index = spr_harambe_hit_chest;
+		} else if (target == 1) {
+			global.harambe.sprite_index = spr_harambe_hit_face;		
+		} else {
+			global.harambe.sprite_index = spr_harambe_hit_head;		
+		}
+		var b = instance_create(x, y, blood);
+		set_image_scale(b, scale);
+		setTimeout(function() {
+			shooting = false;
+			collision_time = 0;
+		}, 1000);
 	} else {
-		global.harambe.sprite_index = spr_harambe_hit_head;		
-	}
-	instance_create(x, y, blood);
-	setTimeout(function() {
-		shooting = false;
+		// create bomb
 		collision_time = 0;
-	}, 1000);
+		var _bomb = instance_create(owner.x, owner.y, bomb);
+		_bomb.goto_x = this.x;
+		_bomb.goto_y = this.y;
+		_bomb._speed = global.WIDTH/4 * Math.max(1, global.GOD.level/15);
+	}
 }
 }
 }
@@ -2254,7 +2332,6 @@ function __blood() {
 __instance_init__(this, blood, null, 1, 0, spr_blood_spot, 1, 11);
 this.on_creation = function() {
 with(this) {
-set_image_scale(this, Math.ceil(random(4)));
 depth = global.harambe.depth-1;
 image_speed = 0.2;
 }
@@ -2297,6 +2374,73 @@ this.on_roomend = on_roomend_i;
 this.on_animationend = on_animationend_i;
 this.on_draw = on_draw_i;
 }; var title_screen = new __title_screen();
+
+function __bomb() {
+__instance_init__(this, bomb, null, 1, 0, spr_bomb, 1, 14);
+this.on_creation = function() {
+with(this) {
+set_image_scale(this, 1);
+hit = false;
+}
+};
+this.on_destroy = on_destroy_i;
+this.on_step = function() {
+with(this) {
+if (x != goto_x || y != goto_y) {
+	move_towards_point(goto_x, goto_y, _speed);
+} else {
+	sprite_index = spr_explosion;
+	image_angle = 0;
+	image_speed = 0.7;
+}
+}
+};
+this.on_end_step = function() {
+with(this) {
+if (sprite_index != spr_explosion) {
+	depth = -y;
+	image_angle += 5;
+} else {
+	depth = global.harambe.depth -1;
+}
+}
+};
+this.on_collision = function() {
+with(this) {
+this.other = this.place_meeting(this.x, this.y, harambe);
+if(this.other != null) {
+if (sprite_index == spr_explosion && !hit) {
+	hit = true;
+	update_harambe_hp(-10);
+	global.harambe.image_speed = 0.05;
+	global.harambe.image_index = 0;
+	global.harambe.sprite_index = spr_harambe_hit_face;	
+	var b = instance_create(x, y, blood);
+	set_image_scale(b, 6);
+}
+}
+this.other = this.place_meeting(this.x, this.y, child);
+if(this.other != null) {
+if (sprite_index == spr_explosion) {
+	other.speed = this._speed*3;
+	other.direction = point_direction(this.x, this.y, other.x, other.y);
+}
+}
+}
+};
+this.on_roomstart = on_roomstart_i;
+this.on_roomend = on_roomend_i;
+this.on_animationend = function() {
+if(this.image_index >= this.image_number - 1) {
+with(this) {
+if (sprite_index == spr_explosion) {
+	instance_destroy();
+}
+}
+}
+};
+this.on_draw = on_draw_i;
+}; var bomb = new __bomb();
 
 
 
@@ -2435,21 +2579,6 @@ draw_sprite_ext(obj.sprite_index,
 				obj.image_yscale,
 				obj.image_angle,
 				obj.image_alpha);
-}
-function enterFullScreen() { 
-alert("Going full");
-var i = document.getElementById("tululoogame");
-
-// go full-screen
-if (i.requestFullscreen) {
-	i.requestFullscreen();
-} else if (i.webkitRequestFullscreen) {
-	i.webkitRequestFullscreen();
-} else if (i.mozRequestFullScreen) {
-	i.mozRequestFullScreen();
-} else if (i.msRequestFullscreen) {
-	i.msRequestFullscreen();
-}
 }
 
 

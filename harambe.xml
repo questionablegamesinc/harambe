@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><tululoo version="130" uid="734" title="" advancedscriptmode="0" imgfolder="img" audfolder="aud"><functions/><variables/><comments/><sprites count="25"><sprite name="spr_block" centerx="0" centery="0" collisionshape="Box" collisionradius="32" collisionleft="0" collisionright="64" collisiontop="0" collisionbottom="64"/><sprite name="spr_child_flying" centerx="16" centery="16" collisionshape="Circle" collisionradius="16" collisionleft="0" collisionright="32" collisiontop="0" collisionbottom="32"/><sprite name="spr_child_launched" centerx="13" centery="12" collisionshape="Circle" collisionradius="13" collisionleft="0" collisionright="26" collisiontop="0" collisionbottom="24"/><sprite name="spr_child_launching" centerx="12" centery="12" collisionshape="Box" collisionradius="12" collisionleft="0" collisionright="24" collisiontop="0" collisionbottom="24"/><sprite name="spr_child_walk" centerx="13" centery="12" collisionshape="Circle" collisionradius="13" collisionleft="0" collisionright="26" collisiontop="0" collisionbottom="24"/><sprite name="spr_crosshair" centerx="8" centery="8" collisionshape="Box" collisionradius="8" collisionleft="0" collisionright="16" collisiontop="0" collisionbottom="16"/><sprite name="spr_food" centerx="16" centery="16" collisionshape="Circle" collisionradius="16" collisionleft="0" collisionright="32" collisiontop="0" collisionbottom="32"/><sprite name="spr_harambe_dead" centerx="40" centery="84" collisionshape="Circle" collisionradius="40" collisionleft="0" collisionright="80" collisiontop="0" collisionbottom="128"/><sprite name="spr_harambe_hit_chest" centerx="29" centery="32" collisionshape="Circle" collisionradius="29" collisionleft="0" collisionright="59" collisiontop="0" collisionbottom="64"/><sprite name="spr_harambe_hit_face" centerx="32" centery="30" collisionshape="Circle" collisionradius="32" collisionleft="0" collisionright="64" collisiontop="0" collisionbottom="60"/><sprite name="spr_harambe_hit_head" centerx="39" centery="32" collisionshape="Circle" collisionradius="32" collisionleft="0" collisionright="78" collisiontop="0" collisionbottom="65"/><sprite name="spr_harambe_punch_left" centerx="45" centery="32" collisionshape="Circle" collisionradius="32" collisionleft="0" collisionright="90" collisiontop="0" collisionbottom="64"/><sprite name="spr_harambe_punch_right" centerx="45" centery="28" collisionshape="Circle" collisionradius="32" collisionleft="0" collisionright="90" collisiontop="0" collisionbottom="57"/><sprite name="spr_harambe_run" centerx="39" centery="32" collisionshape="Circle" collisionradius="30" collisionleft="8" collisionright="68" collisiontop="10" collisionbottom="68"/><sprite name="spr_harambe_stand" centerx="39" centery="32" collisionshape="Circle" collisionradius="30" collisionleft="12" collisionright="68" collisiontop="8" collisionbottom="64"/><sprite name="spr_harambe_walk" centerx="39" centery="32" collisionshape="Circle" collisionradius="30" collisionleft="0" collisionright="78" collisiontop="0" collisionbottom="64"/><sprite name="spr_shadow" centerx="10" centery="5" collisionshape="Box" collisionradius="10" collisionleft="0" collisionright="21" collisiontop="0" collisionbottom="11"/><sprite name="spr_swat_shoot" centerx="16" centery="24" collisionshape="Box" collisionradius="16" collisionleft="0" collisionright="32" collisiontop="0" collisionbottom="48"/><sprite name="spr_swat_stand" centerx="16" centery="24" collisionshape="Box" collisionradius="16" collisionleft="0" collisionright="32" collisiontop="0" collisionbottom="48"/><sprite name="spr_target" centerx="4" centery="4" collisionshape="Box" collisionradius="4" collisionleft="0" collisionright="8" collisiontop="0" collisionbottom="8"/><sprite name="spr_fence" centerx="10" centery="61" collisionshape="Box" collisionradius="10" collisionleft="0" collisionright="20" collisiontop="0" collisionbottom="122"/><sprite name="spr_fence_pole" centerx="17" centery="76" collisionshape="Box" collisionradius="17" collisionleft="0" collisionright="34" collisiontop="0" collisionbottom="153"/><sprite name="spr_blood_pool" centerx="20" centery="16" collisionshape="Box" collisionradius="20" collisionleft="0" collisionright="40" collisiontop="0" collisionbottom="32"/><sprite name="spr_blood_spot" centerx="30" centery="32" collisionshape="Box" collisionradius="30" collisionleft="0" collisionright="60" collisiontop="0" collisionbottom="64"/><sprite name="spr_harambe_toss" centerx="40" centery="50" collisionshape="Circle" collisionradius="40" collisionleft="0" collisionright="80" collisiontop="0" collisionbottom="100"/></sprites><frames count="133"><frame file="0" sprite="spr_harambe_run"/><frame file="1" sprite="spr_harambe_run"/><frame file="2" sprite="spr_harambe_run"/><frame file="3" sprite="spr_harambe_run"/><frame file="4" sprite="spr_harambe_run"/><frame file="5" sprite="spr_harambe_run"/><frame file="6" sprite="spr_harambe_run"/><frame file="7" sprite="spr_harambe_run"/><frame file="8" sprite="spr_harambe_run"/><frame file="0" sprite="spr_harambe_stand"/><frame file="1" sprite="spr_harambe_stand"/><frame file="2" sprite="spr_harambe_stand"/><frame file="3" sprite="spr_harambe_stand"/><frame file="4" sprite="spr_harambe_stand"/><frame file="5" sprite="spr_harambe_stand"/><frame file="6" sprite="spr_harambe_stand"/><frame file="7" sprite="spr_harambe_stand"/><frame file="0" sprite="spr_child_walk"/><frame file="1" sprite="spr_child_walk"/><frame file="2" sprite="spr_child_walk"/><frame file="3" sprite="spr_child_walk"/><frame file="4" sprite="spr_child_walk"/><frame file="5" sprite="spr_child_walk"/><frame file="6" sprite="spr_child_walk"/><frame file="7" sprite="spr_child_walk"/><frame file="8" sprite="spr_child_walk"/><frame file="0" sprite="spr_child_launched"/><frame file="1" sprite="spr_child_launched"/><frame file="2" sprite="spr_child_launched"/><frame file="3" sprite="spr_child_launched"/><frame file="4" sprite="spr_child_launched"/><frame file="5" sprite="spr_child_launched"/><frame file="6" sprite="spr_child_launched"/><frame file="7" sprite="spr_child_launched"/><frame file="8" sprite="spr_child_launched"/><frame file="9" sprite="spr_child_launched"/><frame file="10" sprite="spr_child_launched"/><frame file="11" sprite="spr_child_launched"/><frame file="12" sprite="spr_child_launched"/><frame file="13" sprite="spr_child_launched"/><frame file="14" sprite="spr_child_launched"/><frame file="15" sprite="spr_child_launched"/><frame file="16" sprite="spr_child_launched"/><frame file="17" sprite="spr_child_launched"/><frame file="18" sprite="spr_child_launched"/><frame file="19" sprite="spr_child_launched"/><frame file="20" sprite="spr_child_launched"/><frame file="21" sprite="spr_child_launched"/><frame file="0" sprite="spr_child_launching"/><frame file="1" sprite="spr_child_launching"/><frame file="0" sprite="spr_child_flying"/><frame file="1" sprite="spr_child_flying"/><frame file="2" sprite="spr_child_flying"/><frame file="3" sprite="spr_child_flying"/><frame file="4" sprite="spr_child_flying"/><frame file="5" sprite="spr_child_flying"/><frame file="6" sprite="spr_child_flying"/><frame file="7" sprite="spr_child_flying"/><frame file="8" sprite="spr_child_flying"/><frame file="9" sprite="spr_child_flying"/><frame file="10" sprite="spr_child_flying"/><frame file="11" sprite="spr_child_flying"/><frame file="0" sprite="spr_shadow"/><frame file="0" sprite="spr_swat_stand"/><frame file="1" sprite="spr_swat_stand"/><frame file="2" sprite="spr_swat_stand"/><frame file="3" sprite="spr_swat_stand"/><frame file="0" sprite="spr_block"/><frame file="0" sprite="spr_target"/><frame file="0" sprite="spr_crosshair"/><frame file="0" sprite="spr_harambe_punch_right"/><frame file="1" sprite="spr_harambe_punch_right"/><frame file="2" sprite="spr_harambe_punch_right"/><frame file="3" sprite="spr_harambe_punch_right"/><frame file="0" sprite="spr_harambe_punch_left"/><frame file="1" sprite="spr_harambe_punch_left"/><frame file="2" sprite="spr_harambe_punch_left"/><frame file="0" sprite="spr_harambe_walk"/><frame file="1" sprite="spr_harambe_walk"/><frame file="2" sprite="spr_harambe_walk"/><frame file="3" sprite="spr_harambe_walk"/><frame file="4" sprite="spr_harambe_walk"/><frame file="5" sprite="spr_harambe_walk"/><frame file="6" sprite="spr_harambe_walk"/><frame file="7" sprite="spr_harambe_walk"/><frame file="8" sprite="spr_harambe_walk"/><frame file="9" sprite="spr_harambe_walk"/><frame file="0" sprite="spr_harambe_hit_head"/><frame file="1" sprite="spr_harambe_hit_head"/><frame file="2" sprite="spr_harambe_hit_head"/><frame file="3" sprite="spr_harambe_hit_head"/><frame file="0" sprite="spr_harambe_hit_face"/><frame file="1" sprite="spr_harambe_hit_face"/><frame file="0" sprite="spr_harambe_hit_chest"/><frame file="1" sprite="spr_harambe_hit_chest"/><frame file="0" sprite="spr_food"/><frame file="1" sprite="spr_food"/><frame file="2" sprite="spr_food"/><frame file="3" sprite="spr_food"/><frame file="4" sprite="spr_food"/><frame file="5" sprite="spr_food"/><frame file="6" sprite="spr_food"/><frame file="7" sprite="spr_food"/><frame file="8" sprite="spr_food"/><frame file="9" sprite="spr_food"/><frame file="10" sprite="spr_food"/><frame file="11" sprite="spr_food"/><frame file="12" sprite="spr_food"/><frame file="13" sprite="spr_food"/><frame file="14" sprite="spr_food"/><frame file="15" sprite="spr_food"/><frame file="0" sprite="spr_swat_shoot"/><frame file="1" sprite="spr_swat_shoot"/><frame file="2" sprite="spr_swat_shoot"/><frame file="3" sprite="spr_swat_shoot"/><frame file="0" sprite="spr_fence"/><frame file="0" sprite="spr_fence_pole"/><frame file="0" sprite="spr_blood_pool"/><frame file="1" sprite="spr_blood_pool"/><frame file="2" sprite="spr_blood_pool"/><frame file="0" sprite="spr_blood_spot"/><frame file="1" sprite="spr_blood_spot"/><frame file="2" sprite="spr_blood_spot"/><frame file="0" sprite="spr_harambe_dead"/><frame file="1" sprite="spr_harambe_dead"/><frame file="2" sprite="spr_harambe_dead"/><frame file="3" sprite="spr_harambe_dead"/><frame file="0" sprite="spr_harambe_toss"/><frame file="1" sprite="spr_harambe_toss"/><frame file="2" sprite="spr_harambe_toss"/><frame file="3" sprite="spr_harambe_toss"/><frame file="4" sprite="spr_harambe_toss"/><frame file="5" sprite="spr_harambe_toss"/></frames><sounds count="1"><sound name="blow" wav="blow.wav" mp3="" ogg=""/></sounds><musics count="1"><music name="snd_bg_voices" wav="" mp3="" ogg="bg_voices.ogg"/></musics><backgrounds count="4"><background name="bg_grass_tile" file="tile_grass4.png" tile="0" tileheight="32" tilewidth="32" tilexoffset="0" tileyoffset="0" tilexspace="0" tileyspace="0"/><background name="bg_title" file="title_screen.png" tile="0" tileheight="32" tilewidth="32" tilexoffset="0" tileyoffset="0" tilexspace="0" tileyspace="0"/><background name="bg_grass_tile_small" file="tile_grass4_small.png" tile="0" tileheight="32" tilewidth="32" tilexoffset="0" tileyoffset="0" tilexspace="0" tileyspace="0"/><background name="bg_grass_tile_2" file="tile_grass5_small.png" tile="0" tileheight="32" tilewidth="32" tilexoffset="0" tileyoffset="0" tilexspace="0" tileyspace="0"/></backgrounds><fonts count="3"><font name="courier12" family="courier" size="12" bold="0" italic="0"/><font name="courier13" family="courier" size="13" bold="0" italic="0"/><font name="generic" family="courier" size="20" bold="0" italic="0"/></fonts><objects count="14"><object name="GOD" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="-9999" collision="1" parent="" direction="0" image_angle="0"/><object name="harambe" template="" prototype="1" scene="" sprite="spr_harambe_run" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="block" template="" prototype="1" scene="" sprite="spr_block" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="child" template="" prototype="1" scene="" sprite="spr_child_launching" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="shadow" template="" prototype="1" scene="" sprite="spr_shadow" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="enemy" template="" prototype="1" scene="" sprite="spr_swat_stand" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="target" template="" prototype="1" scene="" sprite="spr_target" x="0" y="0" visible="0" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="crosshair" template="" prototype="1" scene="" sprite="spr_crosshair" x="0" y="0" visible="1" depth="-999999" collision="1" parent="" direction="0" image_angle="0"/><object name="text_handler" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="-9999" collision="1" parent="" direction="0" image_angle="0"/><object name="food" template="" prototype="1" scene="" sprite="spr_food" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="fence_pole" template="" prototype="1" scene="" sprite="spr_fence_pole" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="blood" template="" prototype="1" scene="" sprite="spr_blood_spot" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="title_screen" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="SceneObject729" template="title_screen" prototype="0" scene="room_title" sprite="" x="320" y="128" visible="0" depth="0" collision="0" parent="" direction="0" image_angle="0"/></objects><scripts count="52"><script name="scr_29" object="GOD" event="Creation" parameter="">global.LOG = true;
+<?xml version="1.0" encoding="UTF-8"?><tululoo version="130" uid="747" title="" advancedscriptmode="0" imgfolder="img" audfolder="aud"><functions/><variables/><comments/><sprites count="30"><sprite name="spr_block" centerx="0" centery="0" collisionshape="Box" collisionradius="32" collisionleft="0" collisionright="64" collisiontop="0" collisionbottom="64"/><sprite name="spr_child_flying" centerx="16" centery="16" collisionshape="Circle" collisionradius="16" collisionleft="0" collisionright="32" collisiontop="0" collisionbottom="32"/><sprite name="spr_child_launched" centerx="13" centery="12" collisionshape="Circle" collisionradius="13" collisionleft="0" collisionright="26" collisiontop="0" collisionbottom="24"/><sprite name="spr_child_launching" centerx="12" centery="12" collisionshape="Box" collisionradius="12" collisionleft="0" collisionright="24" collisiontop="0" collisionbottom="24"/><sprite name="spr_child_walk" centerx="13" centery="12" collisionshape="Circle" collisionradius="13" collisionleft="0" collisionright="26" collisiontop="0" collisionbottom="24"/><sprite name="spr_crosshair" centerx="8" centery="8" collisionshape="Box" collisionradius="8" collisionleft="0" collisionright="16" collisiontop="0" collisionbottom="16"/><sprite name="spr_food" centerx="16" centery="16" collisionshape="Circle" collisionradius="16" collisionleft="0" collisionright="32" collisiontop="0" collisionbottom="32"/><sprite name="spr_harambe_dead" centerx="40" centery="84" collisionshape="Circle" collisionradius="40" collisionleft="0" collisionright="80" collisiontop="0" collisionbottom="128"/><sprite name="spr_harambe_hit_chest" centerx="29" centery="32" collisionshape="Circle" collisionradius="29" collisionleft="0" collisionright="59" collisiontop="0" collisionbottom="64"/><sprite name="spr_harambe_hit_face" centerx="32" centery="30" collisionshape="Circle" collisionradius="32" collisionleft="0" collisionright="64" collisiontop="0" collisionbottom="60"/><sprite name="spr_harambe_hit_head" centerx="39" centery="32" collisionshape="Circle" collisionradius="32" collisionleft="0" collisionright="78" collisiontop="0" collisionbottom="65"/><sprite name="spr_harambe_punch_left" centerx="45" centery="32" collisionshape="Circle" collisionradius="32" collisionleft="0" collisionright="90" collisiontop="0" collisionbottom="64"/><sprite name="spr_harambe_punch_right" centerx="45" centery="28" collisionshape="Circle" collisionradius="32" collisionleft="0" collisionright="90" collisiontop="0" collisionbottom="57"/><sprite name="spr_harambe_run" centerx="39" centery="32" collisionshape="Circle" collisionradius="30" collisionleft="8" collisionright="68" collisiontop="10" collisionbottom="68"/><sprite name="spr_harambe_stand" centerx="39" centery="32" collisionshape="Circle" collisionradius="30" collisionleft="12" collisionright="68" collisiontop="8" collisionbottom="64"/><sprite name="spr_harambe_walk" centerx="39" centery="32" collisionshape="Circle" collisionradius="30" collisionleft="0" collisionright="78" collisiontop="0" collisionbottom="64"/><sprite name="spr_shadow" centerx="10" centery="5" collisionshape="Box" collisionradius="10" collisionleft="0" collisionright="21" collisiontop="0" collisionbottom="11"/><sprite name="spr_swat_shoot" centerx="16" centery="24" collisionshape="Box" collisionradius="16" collisionleft="0" collisionright="32" collisiontop="0" collisionbottom="48"/><sprite name="spr_swat_stand" centerx="16" centery="24" collisionshape="Box" collisionradius="16" collisionleft="0" collisionright="32" collisiontop="0" collisionbottom="48"/><sprite name="spr_target" centerx="4" centery="4" collisionshape="Box" collisionradius="4" collisionleft="0" collisionright="8" collisiontop="0" collisionbottom="8"/><sprite name="spr_fence" centerx="10" centery="61" collisionshape="Box" collisionradius="10" collisionleft="0" collisionright="20" collisiontop="0" collisionbottom="122"/><sprite name="spr_fence_pole" centerx="17" centery="76" collisionshape="Box" collisionradius="17" collisionleft="0" collisionright="34" collisiontop="0" collisionbottom="153"/><sprite name="spr_blood_pool" centerx="20" centery="16" collisionshape="Box" collisionradius="20" collisionleft="0" collisionright="40" collisiontop="0" collisionbottom="32"/><sprite name="spr_blood_spot" centerx="30" centery="32" collisionshape="Box" collisionradius="30" collisionleft="0" collisionright="60" collisiontop="0" collisionbottom="64"/><sprite name="spr_harambe_toss" centerx="40" centery="50" collisionshape="Circle" collisionradius="40" collisionleft="0" collisionright="80" collisiontop="0" collisionbottom="100"/><sprite name="spr_policeman_stand" centerx="12" centery="16" collisionshape="Box" collisionradius="12" collisionleft="0" collisionright="24" collisiontop="0" collisionbottom="32"/><sprite name="spr_policeman_shoot" centerx="12" centery="16" collisionshape="Box" collisionradius="12" collisionleft="0" collisionright="24" collisiontop="0" collisionbottom="32"/><sprite name="spr_soldier_shoot" centerx="12" centery="16" collisionshape="Box" collisionradius="12" collisionleft="0" collisionright="24" collisiontop="0" collisionbottom="32"/><sprite name="spr_bomb" centerx="8" centery="8" collisionshape="Circle" collisionradius="6" collisionleft="0" collisionright="16" collisiontop="0" collisionbottom="16"/><sprite name="spr_explosion" centerx="64" centery="64" collisionshape="Circle" collisionradius="40" collisionleft="0" collisionright="128" collisiontop="0" collisionbottom="128"/></sprites><frames count="154"><frame file="0" sprite="spr_harambe_run"/><frame file="1" sprite="spr_harambe_run"/><frame file="2" sprite="spr_harambe_run"/><frame file="3" sprite="spr_harambe_run"/><frame file="4" sprite="spr_harambe_run"/><frame file="5" sprite="spr_harambe_run"/><frame file="6" sprite="spr_harambe_run"/><frame file="7" sprite="spr_harambe_run"/><frame file="8" sprite="spr_harambe_run"/><frame file="0" sprite="spr_harambe_stand"/><frame file="1" sprite="spr_harambe_stand"/><frame file="2" sprite="spr_harambe_stand"/><frame file="3" sprite="spr_harambe_stand"/><frame file="4" sprite="spr_harambe_stand"/><frame file="5" sprite="spr_harambe_stand"/><frame file="6" sprite="spr_harambe_stand"/><frame file="7" sprite="spr_harambe_stand"/><frame file="0" sprite="spr_child_walk"/><frame file="1" sprite="spr_child_walk"/><frame file="2" sprite="spr_child_walk"/><frame file="3" sprite="spr_child_walk"/><frame file="4" sprite="spr_child_walk"/><frame file="5" sprite="spr_child_walk"/><frame file="6" sprite="spr_child_walk"/><frame file="7" sprite="spr_child_walk"/><frame file="8" sprite="spr_child_walk"/><frame file="0" sprite="spr_child_launched"/><frame file="1" sprite="spr_child_launched"/><frame file="2" sprite="spr_child_launched"/><frame file="3" sprite="spr_child_launched"/><frame file="4" sprite="spr_child_launched"/><frame file="5" sprite="spr_child_launched"/><frame file="6" sprite="spr_child_launched"/><frame file="7" sprite="spr_child_launched"/><frame file="8" sprite="spr_child_launched"/><frame file="9" sprite="spr_child_launched"/><frame file="10" sprite="spr_child_launched"/><frame file="11" sprite="spr_child_launched"/><frame file="12" sprite="spr_child_launched"/><frame file="13" sprite="spr_child_launched"/><frame file="14" sprite="spr_child_launched"/><frame file="15" sprite="spr_child_launched"/><frame file="16" sprite="spr_child_launched"/><frame file="17" sprite="spr_child_launched"/><frame file="18" sprite="spr_child_launched"/><frame file="19" sprite="spr_child_launched"/><frame file="20" sprite="spr_child_launched"/><frame file="21" sprite="spr_child_launched"/><frame file="0" sprite="spr_child_launching"/><frame file="1" sprite="spr_child_launching"/><frame file="0" sprite="spr_child_flying"/><frame file="1" sprite="spr_child_flying"/><frame file="2" sprite="spr_child_flying"/><frame file="3" sprite="spr_child_flying"/><frame file="4" sprite="spr_child_flying"/><frame file="5" sprite="spr_child_flying"/><frame file="6" sprite="spr_child_flying"/><frame file="7" sprite="spr_child_flying"/><frame file="8" sprite="spr_child_flying"/><frame file="9" sprite="spr_child_flying"/><frame file="10" sprite="spr_child_flying"/><frame file="11" sprite="spr_child_flying"/><frame file="0" sprite="spr_shadow"/><frame file="0" sprite="spr_swat_stand"/><frame file="1" sprite="spr_swat_stand"/><frame file="2" sprite="spr_swat_stand"/><frame file="3" sprite="spr_swat_stand"/><frame file="0" sprite="spr_block"/><frame file="0" sprite="spr_target"/><frame file="0" sprite="spr_crosshair"/><frame file="0" sprite="spr_harambe_punch_right"/><frame file="1" sprite="spr_harambe_punch_right"/><frame file="2" sprite="spr_harambe_punch_right"/><frame file="3" sprite="spr_harambe_punch_right"/><frame file="0" sprite="spr_harambe_punch_left"/><frame file="1" sprite="spr_harambe_punch_left"/><frame file="2" sprite="spr_harambe_punch_left"/><frame file="0" sprite="spr_harambe_walk"/><frame file="1" sprite="spr_harambe_walk"/><frame file="2" sprite="spr_harambe_walk"/><frame file="3" sprite="spr_harambe_walk"/><frame file="4" sprite="spr_harambe_walk"/><frame file="5" sprite="spr_harambe_walk"/><frame file="6" sprite="spr_harambe_walk"/><frame file="7" sprite="spr_harambe_walk"/><frame file="8" sprite="spr_harambe_walk"/><frame file="9" sprite="spr_harambe_walk"/><frame file="0" sprite="spr_harambe_hit_head"/><frame file="1" sprite="spr_harambe_hit_head"/><frame file="2" sprite="spr_harambe_hit_head"/><frame file="3" sprite="spr_harambe_hit_head"/><frame file="0" sprite="spr_harambe_hit_face"/><frame file="1" sprite="spr_harambe_hit_face"/><frame file="0" sprite="spr_harambe_hit_chest"/><frame file="1" sprite="spr_harambe_hit_chest"/><frame file="0" sprite="spr_food"/><frame file="1" sprite="spr_food"/><frame file="2" sprite="spr_food"/><frame file="3" sprite="spr_food"/><frame file="4" sprite="spr_food"/><frame file="5" sprite="spr_food"/><frame file="6" sprite="spr_food"/><frame file="7" sprite="spr_food"/><frame file="8" sprite="spr_food"/><frame file="9" sprite="spr_food"/><frame file="10" sprite="spr_food"/><frame file="11" sprite="spr_food"/><frame file="12" sprite="spr_food"/><frame file="13" sprite="spr_food"/><frame file="14" sprite="spr_food"/><frame file="15" sprite="spr_food"/><frame file="0" sprite="spr_swat_shoot"/><frame file="1" sprite="spr_swat_shoot"/><frame file="2" sprite="spr_swat_shoot"/><frame file="3" sprite="spr_swat_shoot"/><frame file="0" sprite="spr_fence"/><frame file="0" sprite="spr_fence_pole"/><frame file="0" sprite="spr_blood_pool"/><frame file="1" sprite="spr_blood_pool"/><frame file="2" sprite="spr_blood_pool"/><frame file="0" sprite="spr_blood_spot"/><frame file="1" sprite="spr_blood_spot"/><frame file="2" sprite="spr_blood_spot"/><frame file="0" sprite="spr_harambe_dead"/><frame file="1" sprite="spr_harambe_dead"/><frame file="2" sprite="spr_harambe_dead"/><frame file="3" sprite="spr_harambe_dead"/><frame file="0" sprite="spr_harambe_toss"/><frame file="1" sprite="spr_harambe_toss"/><frame file="2" sprite="spr_harambe_toss"/><frame file="3" sprite="spr_harambe_toss"/><frame file="4" sprite="spr_harambe_toss"/><frame file="5" sprite="spr_harambe_toss"/><frame file="0" sprite="spr_policeman_stand"/><frame file="1" sprite="spr_policeman_stand"/><frame file="2" sprite="spr_policeman_stand"/><frame file="3" sprite="spr_policeman_stand"/><frame file="0" sprite="spr_policeman_shoot"/><frame file="1" sprite="spr_policeman_shoot"/><frame file="2" sprite="spr_policeman_shoot"/><frame file="3" sprite="spr_policeman_shoot"/><frame file="0" sprite="spr_soldier_shoot"/><frame file="1" sprite="spr_soldier_shoot"/><frame file="2" sprite="spr_soldier_shoot"/><frame file="3" sprite="spr_soldier_shoot"/><frame file="0" sprite="spr_bomb"/><frame file="0" sprite="spr_explosion"/><frame file="1" sprite="spr_explosion"/><frame file="2" sprite="spr_explosion"/><frame file="3" sprite="spr_explosion"/><frame file="4" sprite="spr_explosion"/><frame file="5" sprite="spr_explosion"/><frame file="6" sprite="spr_explosion"/><frame file="7" sprite="spr_explosion"/></frames><sounds count="1"><sound name="blow" wav="blow.wav" mp3="" ogg=""/></sounds><musics count="1"><music name="snd_bg_voices" wav="" mp3="" ogg="bg_voices.ogg"/></musics><backgrounds count="4"><background name="bg_grass_tile" file="tile_grass4.png" tile="0" tileheight="32" tilewidth="32" tilexoffset="0" tileyoffset="0" tilexspace="0" tileyspace="0"/><background name="bg_title" file="title_screen.png" tile="0" tileheight="32" tilewidth="32" tilexoffset="0" tileyoffset="0" tilexspace="0" tileyspace="0"/><background name="bg_grass_tile_small" file="tile_grass4_small.png" tile="0" tileheight="32" tilewidth="32" tilexoffset="0" tileyoffset="0" tilexspace="0" tileyspace="0"/><background name="bg_grass_tile_2" file="tile_grass5_small.png" tile="0" tileheight="32" tilewidth="32" tilexoffset="0" tileyoffset="0" tilexspace="0" tileyspace="0"/></backgrounds><fonts count="3"><font name="courier12" family="courier" size="12" bold="0" italic="0"/><font name="courier13" family="courier" size="13" bold="0" italic="0"/><font name="generic" family="courier" size="20" bold="0" italic="0"/></fonts><objects count="15"><object name="GOD" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="-9999" collision="1" parent="" direction="0" image_angle="0"/><object name="harambe" template="" prototype="1" scene="" sprite="spr_harambe_run" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="block" template="" prototype="1" scene="" sprite="spr_block" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="child" template="" prototype="1" scene="" sprite="spr_child_launching" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="shadow" template="" prototype="1" scene="" sprite="spr_shadow" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="enemy" template="" prototype="1" scene="" sprite="spr_swat_stand" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="target" template="" prototype="1" scene="" sprite="spr_target" x="0" y="0" visible="0" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="crosshair" template="" prototype="1" scene="" sprite="spr_crosshair" x="0" y="0" visible="1" depth="-999999" collision="1" parent="" direction="0" image_angle="0"/><object name="text_handler" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="-9999" collision="1" parent="" direction="0" image_angle="0"/><object name="food" template="" prototype="1" scene="" sprite="spr_food" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="fence_pole" template="" prototype="1" scene="" sprite="spr_fence_pole" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="blood" template="" prototype="1" scene="" sprite="spr_blood_spot" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="title_screen" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="SceneObject729" template="title_screen" prototype="0" scene="room_title" sprite="" x="320" y="128" visible="0" depth="0" collision="0" parent="" direction="0" image_angle="0"/><object name="bomb" template="" prototype="1" scene="" sprite="spr_bomb" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/></objects><scripts count="59"><script name="scr_29" object="GOD" event="Creation" parameter="">global.LOG = true;
 global.WIDTH = Math.floor(room_width/24);
 global.HEIGHT = Math.floor(room_height/24);
 log("global.WIDTH = " + global.WIDTH);
@@ -153,7 +153,14 @@ setTimeout(function() {
 	me.launched = true;
 	me.sprite_index = spr_child_launched;
 	me.image_speed = _speed /20;
-}, 1000);</script><script name="scr_45" object="harambe" event="End step" parameter="">if (global.GOD.game_over) {
+}, 1000);
+
+
+this.lbound = global.harambe.lbound;
+this.rbound = global.harambe.rbound;
+this.ubound = global.harambe.ubound;
+this.dbound = global.harambe.dbound;
+</script><script name="scr_45" object="harambe" event="End step" parameter="">if (global.GOD.game_over) {
 	depth = global.GOD.depth-1;
 } else {
 	depth = -y;
@@ -184,7 +191,7 @@ if (speed &gt; 0.2) {
 }
 </script><script name="scr_56" object="child" event="End step" parameter="">depth = -y;
 collision_checking = (sprite_index == spr_child_flying ||
-	point_distance(x, y, global.harambe.x, global.harambe.y) &lt; global.WIDTH*5);
+	point_distance(x, y, global.harambe.x, global.harambe.y) &lt; global.WIDTH*3);
 
 if (sprite_index == spr_child_flying &amp;&amp; this.target == null) {
 	var threshold = global.WIDTH*3;
@@ -207,46 +214,64 @@ if (speed &gt; 0 &amp;&amp; sprite_index != spr_child_flying) {
 	if (speed &lt; 0.05) {
 		speed = 0;
 	}
+}
+
+if (sprite_index == spr_child_walk) {
+	// boundaries check
+	if (x &lt; lbound || x &gt; rbound) {
+		x = x&lt;lbound ? lbound+1 : rbound-1;
+		speed = 0;
+	}
+	if (y &lt; ubound || y &gt; dbound) {
+		y = y&lt;ubound ? ubound+1 : dbound-1;
+		speed = 0;
+	}
 }</script><script name="_28" object="" event="" parameter=""/><script name="scr_134" object="GOD" event="End step" parameter="">this.level = 1 + Math.floor(score/500);
 
 // blood cleaning
 if (instance_number(blood) &gt; 20) {
 	with(instance_list(blood)[0]) { instance_destroy(); }
 }</script><script name="scr_137" object="GOD" event="Creation" parameter="">// enemy creation
+this.enemy_type = {
+    POLICEMAN: 0,
+    SWAT: 1,
+    SOLDIER: 2
+};
 function interval_enemy() {
 	var rnd = Math.random();
-	var e;
+	var _enemy;
 	if (rnd &lt; 0.25) { // left
-		e = instance_create(global.WIDTH/3,
+		_enemy = instance_create(global.WIDTH/3,
 			global.HEIGHT+random(room_height-global.HEIGHT),
 			enemy)
-		e._direction = 2;
+		_enemy._direction = 2;
 	} else if (rnd &lt; 0.5) { // up
-		e = instance_create(global.WIDTH+random(room_width-global.WIDTH),
+		_enemy = instance_create(global.WIDTH+random(room_width-global.WIDTH),
 			global.HEIGHT/2,
 			enemy);
-		e._direction = 0;
+		_enemy._direction = 0;
 	} else if (rnd &lt; 0.75) { // right
-		e = instance_create(room_width-global.WIDTH/3,
+		_enemy = instance_create(room_width-global.WIDTH/3,
 			global.HEIGHT+random(room_height-global.HEIGHT),
 			enemy);
-		e._direction = 1;
+		_enemy._direction = 1;
 	} else { // down
-		e = instance_create(global.WIDTH+random(room_width-global.WIDTH),
+		_enemy = instance_create(global.WIDTH+random(room_width-global.WIDTH),
 			room_height-global.HEIGHT/2,
 			enemy);
-		e._direction = 3;
+		_enemy._direction = 3;
 	}
+	_enemy.type = Math.floor(random(3));
 	setTimeout(function() { interval_enemy() }, 10000 - Math.min(49, global.GOD.level)*200);
 }
 setTimeout(function() { interval_enemy() }, 5000);</script><script name="scr_138" object="enemy" event="Creation" parameter="">depth = -y;
-set_image_scale(this, 1.75);
 this.image_speed = 0;
 
 this.crosshair = instance_create(x, y, crosshair);
 this.crosshair.goto_x = global.harambe.x;
 this.crosshair.goto_y = global.harambe.y;
 this.crosshair.goto_speed = Math.max(global.GOD.level, 10);
+this.crosshair.owner = this;
 this.interval_time = 10000 - Math.min(49, global.GOD.level)*200;
 
 this.interval_move = setInterval(function() {
@@ -269,8 +294,7 @@ this.interval_move = setInterval(function() {
 			if (interval_time &gt; 0.1) {
 				interval_time/=1.1;
 			}
-		}, interval_time);
-</script><script name="scr_148" object="crosshair" event="Step" parameter="">colliding = false;
+		}, interval_time);</script><script name="scr_148" object="crosshair" event="Step" parameter="">colliding = false;
 if (x != goto_x || y != goto_y) {
 	move_towards_point(goto_x, goto_y, goto_speed);
 }</script><script name="scr_149" object="enemy" event="Destroy" parameter="">with(this.crosshair) { instance_destroy(); }</script><script name="_29" object="" event="" parameter=""/><script name="_30" object="" event="" parameter=""/><script name="_31" object="" event="" parameter=""/><script name="scr_150" object="enemy" event="Draw" parameter="">draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_alpha);
@@ -296,23 +320,45 @@ this.colliding = false;
 this.min_size = Math.max(global.WIDTH, global.HEIGHT)/15;
 this.max_size = this.min_size*2;</script><script name="scr_152" object="crosshair" event="Collision" parameter="harambe">colliding = true;
 collision_time++;
-if (!shooting &amp;&amp; collision_time &gt; 300/Math.log(3+global.GOD.level)) {
-	shooting = true;
-	update_harambe_hp(-5);
-	global.harambe.image_speed = 0.1;
-	global.harambe.image_index = 0;		
-	if (target == 0) {
-		global.harambe.sprite_index = spr_harambe_hit_chest;
-	} else if (target == 1) {
-		global.harambe.sprite_index = spr_harambe_hit_face;		
+var collision_time_max = 175/Math.log(3+global.GOD.level);
+var damage = -1;
+var scale = 2;
+if (owner.type == global.GOD.enemy_type.SWAT) {
+	collision_time_max = 250/Math.log(3+global.GOD.level);
+	damage = -5;
+	scale = 4;
+}
+if (owner.type == global.GOD.enemy_type.SOLDIER) {
+	collision_time_max = 300/Math.log(3+global.GOD.level);
+}
+if (!shooting &amp;&amp; collision_time &gt; collision_time_max) {
+	if (owner.type != global.GOD.enemy_type.SOLDIER) {
+		// normal shot
+		shooting = true;
+		update_harambe_hp(damage);
+		global.harambe.image_speed = 0.1;
+		global.harambe.image_index = 0;		
+		if (target == 0) {
+			global.harambe.sprite_index = spr_harambe_hit_chest;
+		} else if (target == 1) {
+			global.harambe.sprite_index = spr_harambe_hit_face;		
+		} else {
+			global.harambe.sprite_index = spr_harambe_hit_head;		
+		}
+		var b = instance_create(x, y, blood);
+		set_image_scale(b, scale);
+		setTimeout(function() {
+			shooting = false;
+			collision_time = 0;
+		}, 1000);
 	} else {
-		global.harambe.sprite_index = spr_harambe_hit_head;		
-	}
-	instance_create(x, y, blood);
-	setTimeout(function() {
-		shooting = false;
+		// create bomb
 		collision_time = 0;
-	}, 1000);
+		var _bomb = instance_create(owner.x, owner.y, bomb);
+		_bomb.goto_x = this.x;
+		_bomb.goto_y = this.y;
+		_bomb._speed = global.WIDTH/4 * Math.max(1, global.GOD.level/15);
+	}
 }</script><script name="_35" object="" event="" parameter=""/><script name="scr_156" object="harambe" event="Step" parameter="">if (x &lt; lbound || x &gt; rbound) {
 	x = x&lt;lbound ? lbound+1 : rbound-1;
 	speed = 0;
@@ -402,14 +448,26 @@ if (launched) {
 if (x == goto_x &amp;&amp; y == goto_y &amp;&amp; launched) {
 	launched = false;
 	collision_checking = true;
-}</script><script name="scr_172" object="food" event="Draw" parameter="">draw_same_sprite(this);</script><script name="scr_209" object="enemy" event="End step" parameter="">this.image_index = this._direction;
+}</script><script name="scr_172" object="food" event="Draw" parameter="">draw_same_sprite(this);</script><script name="scr_209" object="enemy" event="End step" parameter="">if (type == global.GOD.enemy_type.POLICEMAN) {
+	spr_stand = spr_policeman_stand;
+	spr_shoot = spr_policeman_shoot;
+} else if (type == global.GOD.enemy_type.SWAT) {
+	spr_stand = spr_swat_stand;
+	spr_shoot = spr_swat_shoot;	
+} else if (type == global.GOD.enemy_type.SOLDIER) {
+	spr_stand = spr_soldier_shoot;
+	spr_shoot = spr_soldier_shoot;
+}
+set_image_scale(this, 2);
+
+this.image_index = this._direction;
 
 if (this.crosshair.shooting
 	|| this.crosshair.x != this.crosshair.goto_x
 	|| this.crosshair.y != this.crosshair.goto_y) {
-	sprite_index = spr_swat_shoot;
+	sprite_index = spr_shoot;
 } else {
-	sprite_index = spr_swat_stand;
+	sprite_index = spr_stand;
 }</script><script name="" object="" event="" parameter=""/><script name="scr_716" object="fence_pole" event="Creation" parameter="">set_image_scale(this, 2);
 right_link = null;
 down_link = null;</script><script name="scr_717" object="fence_pole" event="Draw" parameter="">depth = -y;
@@ -427,14 +485,38 @@ if (down_link != null) {
 	draw_rectangle(x-global.WIDTH/2+2, y+2, down_link.x+global.WIDTH/2-2, down_link.y-global.HEIGHT, false);
 }
 //draw_same_sprite(this);
-</script><script name="scr_721" object="blood" event="Creation" parameter="">set_image_scale(this, Math.ceil(random(4)));
-depth = global.harambe.depth-1;
+</script><script name="scr_721" object="blood" event="Creation" parameter="">depth = global.harambe.depth-1;
 image_speed = 0.2;</script><script name="scr_722" object="blood" event="Animation end" parameter="">y += global.HEIGHT/2;
 depth = 999;
 sprite_index = spr_blood_pool;
 image_speed = 0;
 image_index = Math.floor(random(3));</script><script name="" object="" event="" parameter=""/><script name="" object="" event="" parameter=""/><script name="scr_731" object="title_screen" event="Step" parameter="">if (mouse_down) {
 	room_goto(room_main);
+}</script><script name="scr_740" object="bomb" event="Step" parameter="">if (x != goto_x || y != goto_y) {
+	move_towards_point(goto_x, goto_y, _speed);
+} else {
+	sprite_index = spr_explosion;
+	image_angle = 0;
+	image_speed = 0.7;
+}</script><script name="scr_741" object="bomb" event="Creation" parameter="">set_image_scale(this, 1);
+hit = false;</script><script name="scr_743" object="bomb" event="End step" parameter="">if (sprite_index != spr_explosion) {
+	depth = -y;
+	image_angle += 5;
+} else {
+	depth = global.harambe.depth -1;
+}</script><script name="" object="" event="" parameter=""/><script name="scr_745" object="bomb" event="Collision" parameter="harambe">if (sprite_index == spr_explosion &amp;&amp; !hit) {
+	hit = true;
+	update_harambe_hp(-10);
+	global.harambe.image_speed = 0.05;
+	global.harambe.image_index = 0;
+	global.harambe.sprite_index = spr_harambe_hit_face;	
+	var b = instance_create(x, y, blood);
+	set_image_scale(b, 6);
+}</script><script name="scr_746" object="bomb" event="Animation end" parameter="">if (sprite_index == spr_explosion) {
+	instance_destroy();
+}</script><script name="scr_747" object="bomb" event="Collision" parameter="child">if (sprite_index == spr_explosion) {
+	other.speed = this._speed*3;
+	other.direction = point_direction(this.x, this.y, other.x, other.y);
 }</script></scripts><scenes count="2"><scene name="room_main" width="640" height="640" speed="30" red="192" green="192" blue="192" background="bg_grass_tile_small" backgroundstretch="0" backgroundtilex="1" backgroundtiley="1" viewportwidth="640" viewportheight="640" viewportxborder="50" viewportyborder="50" viewportobject="">// get screen width and height
 var e = window, a = 'inner';
 if (!( 'innerWidth' in window )) {
@@ -447,7 +529,7 @@ __room_start__(this, room_main, screen.width, screen.height,
 	30, 192, 192, 192, bg_grass_tile_small.image, true, true, false,
 	screen.width, screen.height, null, 50, 50);
 // create GOD
-instance_create(0, 0, GOD);</scene><scene name="room_title" width="640" height="480" speed="30" red="0" green="0" blue="0" background="bg_title" backgroundstretch="1" backgroundtilex="0" backgroundtiley="0" viewportwidth="640" viewportheight="480" viewportxborder="50" viewportyborder="50" viewportobject=""/></scenes><layers count="2"><layer name="layer_33" scene="room_main" value="1000000"/><layer name="layer_726" scene="room_title" value="1000000"/></layers><tiles count="0"/><fns count="9"><fn name="draw_bold_text" params="x, y, txt, color" description="">function __generic() {
+instance_create(0, 0, GOD);</scene><scene name="room_title" width="640" height="480" speed="30" red="0" green="0" blue="0" background="bg_title" backgroundstretch="1" backgroundtilex="0" backgroundtiley="0" viewportwidth="640" viewportheight="480" viewportxborder="50" viewportyborder="50" viewportobject=""/></scenes><layers count="2"><layer name="layer_33" scene="room_main" value="1000000"/><layer name="layer_726" scene="room_title" value="1000000"/></layers><tiles count="0"/><fns count="8"><fn name="draw_bold_text" params="x, y, txt, color" description="">function __generic() {
 	__font_init__(this, generic, 'courier',
 				Math.min(global.WIDTH, global.HEIGHT)/3, 0, 0)
 };
@@ -508,16 +590,4 @@ setTimeout(function() {
 				obj.image_xscale,
 				obj.image_yscale,
 				obj.image_angle,
-				obj.image_alpha);</fn><fn name="enterFullScreen" params="" description="">alert("Going full");
-var i = document.getElementById("tululoogame");
-
-// go full-screen
-if (i.requestFullscreen) {
-	i.requestFullscreen();
-} else if (i.webkitRequestFullscreen) {
-	i.webkitRequestFullscreen();
-} else if (i.mozRequestFullScreen) {
-	i.mozRequestFullScreen();
-} else if (i.msRequestFullscreen) {
-	i.msRequestFullscreen();
-}</fn></fns></tululoo>
+				obj.image_alpha);</fn></fns></tululoo>
